@@ -22,7 +22,54 @@
 }
 
 .mainContent {
-  padding-top: 100px;
+  padding-top: 80px;
+}
+
+.profile {
+  margin-left: 100px;
+}
+
+#profileDetails {
+  width: 400px;
+}
+
+.profileElement {
+  display: flex;
+  justify-content: space-between;
+}
+
+input.editInputs {
+  width: 100px;
+  color: red;
+}
+
+button.editBtn {
+  width: 48%;
+}
+
+button.btn-warning {
+  width: 20%;
+}
+
+.btn {
+  width: 100%;
+}
+
+.registerInputs {
+  width: 100%;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+#registerFormBox {
+  width: 40%;
+  padding: 100px;
+}
+
+#description {
+  width: 60%;
+  padding: 100px;
 }
 
 .item {
@@ -115,10 +162,63 @@
   position: fixed;
 }
 
-#mainClient {
+.searchTerm {
+  margin-left: 75%;
+}
+
+#cart {
+  width: 40%;
+  margin-left: 5%;
+}
+
+#selectedCartItem {
+  width: 30%;
+  margin-left: 5%;
+}
+
+.flexContent {
   display: flex;
 }
 
-.searchTerm {
-  margin-left: 75%;
+button.btn.cartBtn {
+  width: 150px;
+}
+
+button.btn.cartBtn.btn-danger {
+  margin-right: 10px;
+  margin-left: 100px;
+}
+
+button.btn.btn-success.checkOut {
+  width: 35%;
+  margin-left: 150px;
+}
+
+#displaySelectedOrder {
+  width: 40%;
+  margin-left: 5%;
+}
+
+#orderList {
+  width: 40%;
+  margin-left: 5%;
+}
+
+.numberOfItem {
+  margin-right: 30px;
+}
+
+.totalPrice {
+  margin-right: 120px;
+}
+
+.orderInfoBtn {
+  width: 20%;
+  margin-left: 30px;
+}
+
+.imgInPastOrder {
+  width: 40%;
+  height: 200px;
+  object-fit: fill;
 }

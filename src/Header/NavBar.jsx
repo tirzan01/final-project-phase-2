@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavLink, withRouter } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const style = {
     marginRight: '20px',
@@ -34,13 +34,7 @@ const NavBar = ({ user }) => (
                 Previous Orders
             </NavLink>
             :
-            <NavLink
-                to='/register'
-                exact
-                style={style}
-            >
-                Previous Orders
-            </NavLink>
+            null
         }
         {user ?
             <NavLink
@@ -52,13 +46,7 @@ const NavBar = ({ user }) => (
                 Cart
             </NavLink>
             :
-            <NavLink
-                to='/register'
-                exact
-                style={style}
-            >
-                Cart
-            </NavLink>
+            null
         }
         {user ?
             <NavLink

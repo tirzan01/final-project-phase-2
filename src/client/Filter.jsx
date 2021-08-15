@@ -13,9 +13,7 @@ class Filter extends React.Component {
 
     handleChange = (e, { value }) => {
         this.props.hanldeSortByChange(value)
-        this.setState({
-            value,
-        })
+        this.setState({value})
     }
 
     componentDidUpdate() {
@@ -34,20 +32,40 @@ class Filter extends React.Component {
                 <Form.Field>
                 <Checkbox
                     radio
-                    label='price'
+                    label='price (low-high)'
                     name='checkboxRadioGroup'
-                    value='price'
-                    checked={this.state.value === 'price'}
+                    value='price (low-high)'
+                    checked={this.state.value === 'price (low-high)'}
                     onChange={this.handleChange}
                 />
                 </Form.Field>
                 <Form.Field>
                 <Checkbox
                     radio
-                    label='alphabetically'
+                    label='price (high-low)'
                     name='checkboxRadioGroup'
-                    value='alphabetically'
-                    checked={this.state.value === 'alphabetically'}
+                    value='price (high-low)'
+                    checked={this.state.value === 'price (high-low)'}
+                    onChange={this.handleChange}
+                />
+                </Form.Field>
+                <Form.Field>
+                <Checkbox
+                    radio
+                    label='alphabetically (a-z)'
+                    name='checkboxRadioGroup'
+                    value='alphabetically (a-z)'
+                    checked={this.state.value === 'alphabetically (a-z)'}
+                    onChange={this.handleChange}
+                />
+                </Form.Field>
+                <Form.Field>
+                <Checkbox
+                    radio
+                    label='alphabetically (z-a)'
+                    name='checkboxRadioGroup'
+                    value='alphabetically (z-a)'
+                    checked={this.state.value === 'alphabetically (z-a)'}
                     onChange={this.handleChange}
                 />
                 </Form.Field>

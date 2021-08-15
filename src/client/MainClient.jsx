@@ -83,16 +83,28 @@ class MainClient extends React.Component {
     sortBy = () => {
         if(!this.state.sortBy) {
             return this.state.items
-        }else if(this.state.sortBy === 'price') {
+        }else if(this.state.sortBy === 'price (low-high)') {
             this.setState(prevState => {
                 return{
                     items: prevState.items.sort((a, b) => a.normalPrice - b.normalPrice)
                 }
             })
-        }else {
+        }else if(this.state.sortBy === 'price (high-low)') {
+            this.setState(prevState => {
+                return{
+                    items: prevState.items.sort((a, b) => b.normalPrice - a.normalPrice)
+                }
+            })
+        }else if(this.state.sortBy === 'alphabetically (a-z)') {
             this.setState(prevState => {
                 return {
                     items: prevState.items.sort((a, b) => a.title.localeCompare(b.title))
+                }
+            })
+        }else if(this.state.sortBy === 'alphabetically (z-a)'){
+            this.setState(prevState => {
+                return {
+                    items: prevState.items.sort((a, b) => b.title.localeCompare(a.title))
                 }
             })
         }
@@ -101,12 +113,8 @@ class MainClient extends React.Component {
     render() {
         return (
             <React.Fragment>
-                <SearchTerm
-                    handleChange={this.handleChange}
-                    searchTerm={this.state.searchTerm}
-                    handleSearchTermSubmit={this.handleSearchTermSubmit}
-                />
-                <div id='mainClient'>
+                
+                <div className='flexContent'>
                     <div className='leftHandSide'>
                         <Filter
                             sortBy={this.state.sortBy}
@@ -116,18 +124,26 @@ class MainClient extends React.Component {
                             handleRangeChange={this.handleRangeChange}
                             handlePriceRangeSubmit={this.handlePriceRangeSubmit}
                         />
-                        <AdBox />
+                        <AdBox user={this.props.user} addNewItem={this.props.addNewItem} />
                     </div>
-                    <ItemList
-                        items={this.state.items.filter(item => this.state.displayedItemsIds.includes(item.gameID))}
-                    />
+                    <div>
+                        <SearchTerm
+                            handleChange={this.handleChange}
+                            searchTerm={this.state.searchTerm}
+                            handleSearchTermSubmit={this.handleSearchTermSubmit}
+                        />
+                        <ItemList
+                            items={this.state.items.filter(item => this.state.displayedItemsIds.includes(item.gameID))}
+                            user={this.props.user}
+                            addNewItem={this.props.addNewItem}
+                        />
+                    </div>
                 </div>
             </React.Fragment>
         )
     }
-
     componentDidMount() {
-      fetch("https://www.cheapshark.com/api/1.0/deals")
+        fetch("https://www.cheapshark.com/api/1.0/deals")
         .then(resp => resp.json())
         .then(allItems => {
             const items = []
@@ -142,9 +158,9 @@ class MainClient extends React.Component {
             })
         })
         .catch(err => {
-          console.error(err);
+            console.error(err);
         });
     }
 }
 
-  export default MainClient
+export default MainClient

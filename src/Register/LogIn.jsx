@@ -1,32 +1,12 @@
 import React from 'react'
+import { withRouter } from 'react-router-dom';
+import LogInForm from './LogInForm';
 
-class LogIn extends React.Component {
-    
-    constructor() {
-        super()
+const LogIn = props => {
 
-        this.state = {
-            userName: '',
-            password:'',
-        }
-    }
+    const handleSubmit = () => props.history.push("/")
 
-    handleChange = e => {
-        this.setState({
-            [e.target.name]: e.target.value
-        })
-    }
-
-    handleSubmit = e => {
-        e.preventDefault()
-    }
-
-    render() {
-        return <form onSubmit={this.handleSubmit}>
-            <input type='text' name='userName' value={this.state.userName}  onChange={this.handleChange} />
-            <input type='password' name='password' value={this.state.password}  onChange={this.handleChange} />
-        </form>
-    }
+    return <LogInForm handleSubmit={handleSubmit} handleLogIn={props.handleLogIn} />
 }
 
-export default LogIn
+export default withRouter(LogIn);
